@@ -15,13 +15,11 @@ from langchain_groq import ChatGroq
 import streamlit as st
 import ast
 
-import toml
 
-config = toml.load("Secrets.toml")
 
 # Accessing the values
-groq_api_key = config["GROQ_API_KEY"]
-langchain_endpoint = config["LANGCHAIN_ENDPOINT"]
+groq_api_key = st.secrets["GROQ_API_KEY"]
+langchain_endpoint = st.secrets["LANGCHAIN_ENDPOINT"]
 
 
 
