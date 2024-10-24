@@ -1,0 +1,9 @@
+streamlit
+langchain
+faiss-cpu
+langchain_groq
+langchain_ollama
+pydantic
+langchain-community
+langchain-core
+
