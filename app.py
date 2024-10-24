@@ -14,16 +14,13 @@ from langchain_ollama import OllamaEmbeddings
 from langchain_groq import ChatGroq
 import streamlit as st
 import ast
+import streamlit as st
 
-import toml
-
-
-config = toml.load("secrets.toml")
    
 
-
-groq_api_key = config["GROQ_API_KEY"]
-langchain_endpoint = config["LANGCHAIN_ENDPOINT"]
+# Accessing the values
+groq_api_key = st.secrets["GROQ_API_KEY"]
+langchain_endpoint = st.secrets["LANGCHAIN_ENDPOINT"]
 
 
 
