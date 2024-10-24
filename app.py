@@ -17,7 +17,7 @@ import ast
 
 import toml
 
-config = toml.load("secrets.toml")
+config = toml.load("Secrets.toml")
 
 # Accessing the values
 groq_api_key = config["GROQ_API_KEY"]
