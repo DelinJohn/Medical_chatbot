@@ -15,23 +15,20 @@ from langchain_groq import ChatGroq
 import streamlit as st
 import ast
 
-import os
-from dotenv import load_dotenv
-load_dotenv()
+import toml
 
+config = toml.load("config.toml")
 
-
-LANGCHAIN_API_KEY=os.getenv("LANGCHAIN_API_KEY")
-os.environ['LANGCHAIN_TRACING_V2']='true'
-os.environ['LANGCHAIN_PROJECT']='Medical Chat Bot for Assisting Doctors'
-GROQ_API_KEY=os.getenv("GROQ_API_KEY")
+# Accessing the values
+groq_api_key = config["GROQ_API_KEY"]
+langchain_endpoint = config["LANGCHAIN_ENDPOINT"]
 
 
 
 
 # Loading LLM
 def load_llm(model):
-    llm = ChatGroq(model=model, api_key=GROQ_API_KEY,temperature=0.5) 
+    llm = ChatGroq(model=model, api_key=groq_api_key,temperature=0.5) 
     return llm
 
 
