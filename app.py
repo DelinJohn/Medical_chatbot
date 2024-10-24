@@ -7,7 +7,7 @@ from langchain_groq import ChatGroq
 from typing import Literal
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.utilities import SQLDatabase
-from pydantic import BaseModel,Field
+from langchain_core.pydantic_v1 import BaseModel,Field
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain_ollama import OllamaEmbeddings
@@ -15,11 +15,15 @@ from langchain_groq import ChatGroq
 import streamlit as st
 import ast
 
+import toml
 
 
-# Accessing the values
-groq_api_key = st.secrets["GROQ_API_KEY"]
-langchain_endpoint = st.secrets["LANGCHAIN_ENDPOINT"]
+config = toml.load("secrets.toml")
+   
+
+
+groq_api_key = config["GROQ_API_KEY"]
+langchain_endpoint = config["LANGCHAIN_ENDPOINT"]
 
 
 
