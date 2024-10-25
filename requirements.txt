@@ -6,4 +6,5 @@ langchain_ollama
 pydantic
 langchain-community
 langchain-core
+langchain-nvidia-ai-endpoints
 

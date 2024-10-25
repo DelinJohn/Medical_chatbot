@@ -1,7 +1,7 @@
 # Importing required libraries
 
 
-
+from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 from langchain.vectorstores import FAISS
 from langchain_groq import ChatGroq
 from typing import Literal
@@ -21,7 +21,7 @@ import streamlit as st
 # Accessing the values
 groq_api_key = st.secrets["GROQ_API_KEY"]
 langchain_endpoint = st.secrets["LANGCHAIN_ENDPOINT"]
-
+NVIDIA_API=st.secrets['NVIDIA_API']
 
 
 
@@ -36,7 +36,7 @@ db=SQLDatabase.from_uri('sqlite:///patients.db')
 
 
 # Embeddings
-embeddings=OllamaEmbeddings(model='llama3.1')
+embeddings=NVIDIAEmbeddings(model="nvidia/llama-3.2-nv-embedqa-1b-v1",api_key=NVIDIA_API)
 
 
 # Loading vector stores 
