@@ -36,122 +36,74 @@ db=SQLDatabase.from_uri('sqlite:///patients.db')
 
 
 # Embeddings
-embeddings=NVIDIAEmbeddings(model="nvidia/llama-3.2-nv-embedqa-1b-v1",api_key=NVIDIA_API)
+embeddings=NVIDIAEmbeddings(model="nvidia/nv-embedqa-mistral-7b-v2",api_key=NVIDIA_API)
 
 
 # Loading vector stores 
-abdominal_infection_store = FAISS.load_local(
-    "abdominal_infection_store", embeddings, allow_dangerous_deserialization=True
-)
-
-central_nervous_system_infetions_store = FAISS.load_local(
-    "central_nervous_system_infections_store", embeddings, allow_dangerous_deserialization=True
-)
-
-endocratis_store = FAISS.load_local(
-    "endocratis_store", embeddings, allow_dangerous_deserialization=True
-)
-
-Fungal_Infections_Invasive_store = FAISS.load_local(
-    "Fungal_Infections_Invasive_store", embeddings, allow_dangerous_deserialization=True
-)
-
-Gastrointestinal_Infections_store = FAISS.load_local(
-    "Gastrointestinal_Infections_store", embeddings, allow_dangerous_deserialization=True
-)
-
-Human_Immunodeficiency_Virus_Infection_store = FAISS.load_local(
-    "Human_Immunodeficiency_Virus_store", embeddings, allow_dangerous_deserialization=True
-)
-
-influenza_store = FAISS.load_local(
-    "influenza_store", embeddings, allow_dangerous_deserialization=True
-)
-
-respiratory_tract_infection_Lower_store = FAISS.load_local(
-    "respiratory_tract_infection_Lower_store", embeddings, allow_dangerous_deserialization=True
-)
-
-respiratory_tract_infection_Upper_store = FAISS.load_local(
-    "respiratory_tract_infection_Upper_store", embeddings, allow_dangerous_deserialization=True
-)
-
-Sepsis_and_septic_shock_store = FAISS.load_local(
-    "Sepsis_and_septic_shock_store", embeddings, allow_dangerous_deserialization=True
-)
-
-skin_infection_store = FAISS.load_local(
-    "skin_infection_store", embeddings, allow_dangerous_deserialization=True
-)
-
-STDS_infection_store = FAISS.load_local(
-    "STDS_infection_store", embeddings, allow_dangerous_deserialization=True
-)
-
-surgical_prolaxix_store = FAISS.load_local(
-    "surgical_prolaxix_store", embeddings, allow_dangerous_deserialization=True
-)
-
-tuberclosis_store = FAISS.load_local(
-    "tuberclosis_store", embeddings, allow_dangerous_deserialization=True
-)
-
-Urinary_infection_store = FAISS.load_local(
-    "Urinary_infection_store", embeddings, allow_dangerous_deserialization=True
-
-)
-
-Infection_criteria_store=FAISS.load_local(
-     "infection_criteria",embeddings,allow_dangerous_deserialization=True
-)
-
+Antimicrobial_Regimen_Selection = FAISS.load_local("Antimicrobial_Regimen_Selection", embeddings, allow_dangerous_deserialization=True)
+Central_Nervous_System_Infections = FAISS.load_local("Central_Nervous_System_Infections", embeddings, allow_dangerous_deserialization=True)
+Endocarditis = FAISS.load_local("Endocarditis", embeddings, allow_dangerous_deserialization=True)
+Fungal_Infections = FAISS.load_local("Fungal_Infections", embeddings, allow_dangerous_deserialization=True)
+Gastrointestinal_Infections = FAISS.load_local("Gastrointestinal_Infections", embeddings, allow_dangerous_deserialization=True)
+Human_Immunodeficiency_Virus = FAISS.load_local("Human_Immunodeficiency_Virus", embeddings, allow_dangerous_deserialization=True)
+Influenza = FAISS.load_local("Influenza", embeddings, allow_dangerous_deserialization=True)
+Intra_Abdominal_Infections = FAISS.load_local("Intra_Abdominal_Infections", embeddings, allow_dangerous_deserialization=True)
+Respiratory_Tract_Infections_Lower = FAISS.load_local("Respiratory_Tract_Infections_Lower", embeddings, allow_dangerous_deserialization=True)
+Respiratory_Tract_Infections_Upper = FAISS.load_local("Respiratory_Tract_Infections_Upper", embeddings, allow_dangerous_deserialization=True)
+Sepsis_and_Septic_Shock = FAISS.load_local("Sepsis_and_Septic_Shock", embeddings, allow_dangerous_deserialization=True)
+Sexually_Transmitted_Diseases = FAISS.load_local("Sexually_Transmitted_Diseases", embeddings, allow_dangerous_deserialization=True)
+Skin_and_Soft_Tissue_Infections = FAISS.load_local("Skin_and_Soft_Tissue_Infections", embeddings, allow_dangerous_deserialization=True)
+Surgical_Prophylaxis = FAISS.load_local("Surgical_Prophylaxis", embeddings, allow_dangerous_deserialization=True)
+Tuberculosis = FAISS.load_local("Tuberculosis", embeddings, allow_dangerous_deserialization=True)
+Urinary_Tract_Infections = FAISS.load_local("Urinary_Tract_Infections", embeddings, allow_dangerous_deserialization=True)
 
 
 ## Vector stores
 
 
-vector_store={
-        'abdominal_infection_store':abdominal_infection_store,
-        'central_nervous_system_infections_store':central_nervous_system_infetions_store,
-        'endocarditis_store':endocratis_store,
-        'fungal_infections_invasive_store':Fungal_Infections_Invasive_store,
-        'gastrointestinal_infections_store':Gastrointestinal_Infections_store,
-        'respiratory_tract_infection_lower_store':respiratory_tract_infection_Lower_store,
-        'human_immunodeficiency_virus_infection_store':Human_Immunodeficiency_Virus_Infection_store,
-        'sepsis_and_septic_shock_store':Sepsis_and_septic_shock_store,
-        'skin_infection_store':skin_infection_store,
-        'stds_infection_store':STDS_infection_store,
-        'surgical_prolaxix_store':surgical_prolaxix_store,
-        'tuberclosis_store':tuberclosis_store,
-        'Urinary_infection_store':Urinary_infection_store,
-        'influenza_store':influenza_store
-}
-
+vectorstores = {
+    
+    "Central_Nervous_System_Infections": Central_Nervous_System_Infections,
+    "Endocarditis": Endocarditis,
+    "Fungal_Infections": Fungal_Infections,
+    "Gastrointestinal_Infections": Gastrointestinal_Infections,
+    "Human_Immunodeficiency_Virus": Human_Immunodeficiency_Virus,
+    "Influenza": Influenza,
+    "Intra_Abdominal_Infections": Intra_Abdominal_Infections,
+    "Respiratory_Tract_Infections_Lower": Respiratory_Tract_Infections_Lower,
+    "Respiratory_Tract_Infections_Upper": Respiratory_Tract_Infections_Upper,
+    "Sepsis_and_Septic_Shock": Sepsis_and_Septic_Shock,
+    "Sexually_Transmitted_Diseases": Sexually_Transmitted_Diseases,
+    "Skin_and_Soft_Tissue_Infections": Skin_and_Soft_Tissue_Infections,
+    "Surgical_Prophylaxis": Surgical_Prophylaxis,
+    "Tuberculosis": Tuberculosis,
+    "Urinary_Tract_Infections": Urinary_Tract_Infections}
 
 ## Router LLM
 
 class RouteQuery(BaseModel):
     """Route a user query to the most relevant datasource."""
     datasource: Literal[
-        'abdominal_infection_store',
-        'central_nervous_system_infections_store',
-        'endocarditis_store',
-        'fungal_infections_invasive_store',
-        'gastrointestinal_infections_store',
-        'respiratory_tract_infection_lower_store',
-        'human_immunodeficiency_virus_infection_store',
-        'sepsis_and_septic_shock_store',
-        'skin_infection_store',
-        'stds_infection_store',
-        'surgical_prolaxix_store',
-        'tuberclosis_store',
-        'Urinary_infection_store',
-        'influenza_store',
-        
-    ] = Field(
+                        'Central_Nervous_System_Infections',
+                        'Endocarditis',
+                        'Fungal_Infections',
+                        'Gastrointestinal_Infections',
+                        'Human_Immunodeficiency_Virus',
+                        'Influenza',
+                        'Intra_Abdominal_Infections',
+                        'Respiratory_Tract_Infections_Lower',
+                        'Respiratory_Tract_Infections_Upper',
+                        'Sepsis_and_Septic_Shock',
+                        'Sexually_Transmitted_Diseases',
+                        'Skin_and_Soft_Tissue_Infections',
+                        'Surgical_Prophylaxis',                                   
+                        'Tuberculosis',
+                        'Urinary_Tract_Infections'] = Field(
         ...,
         description="Given different vectorstores, choose the correct vector store based on the symptoms."
     )
+
+
 
 
 
@@ -246,7 +198,7 @@ def context_llm(symptom,patient_history,llm):
 
 
     
-    retriver=Infection_criteria_store.as_retriever()
+    retriver=Antimicrobial_Regimen_Selection.as_retriever()
     prompt = ChatPromptTemplate.from_template(
     """
     Fetch the short and required regimen, medication, and instructions based on the following input:
@@ -371,47 +323,58 @@ def chat_bot(symptoms, patient_Id,model):
         if patient_details is None:
             raise ValueError("The requested patient ID is not in the database.")
 
-        retriever = vector_store[store].as_retriever() if store else None
+        retriever = vectorstores[store].as_retriever() if store else None
         general_details = context_llm(symptoms, patient_details,llm=llm)
 
         
         prompt = ChatPromptTemplate.from_template(
         """
-    You are a doctor’s assistant. Based on the following details, suggest 2-3 appropriate medications, along with specific dosages, duration, rationale for each, and any potential interactions. Ensure the medications do not interact with the patient's history.
+You are a doctor’s assistant. Based on the following details, suggest 2-3 appropriate medications for the patient. Ensure that the first medication is the first line of treatment, followed by an alternative option, and a third option if needed. Include specific dosages, duration, rationale for each, and any potential interactions. Make sure to consider the patient's history and indicate any medications that should be avoided.
 
-    <patient history>
-    {patient_history}
-    </patient history>
+<patient history>
+{patient_history}
+</patient history>
 
-    <general_details>
-    {general_details}
-    </general_details>
+<general_details>
+{general_details}
+</general_details>
 
-    <context>
-    {context}
-    </context>
+<context>
+{context}
+</context>
 
-    
+**Important Notes:**
+- Review the patient history carefully to avoid any medications that may interact with pre-existing conditions or current medications.
+- Clearly state any medications that should be avoided based on the patient history.
+- Consider the information in `general_details`.
+- Avoid making assumptions; provide details strictly based on the data given.
+- No hallucination or external data fetching should occur.
 
-    Output Structure:
-    1. **Medication Recommendations:** 
-        - Medication 1(Should Be first Choice if possible go With the Broad Spectrum): [Name], [Dosage], [Frequency], [Duration]   
-        - Medication 2: [Name], [Dosage], [Frequency], [Duration]
-        - Medication 3 (if needed): [Name], [Dosage], [Frequency], [Duration]
+### Output Structure:
+1. **Medication Recommendations:** (Dosages should consider the age of the patient from the patient history)
+    - **First Line of Treatment:** Medication 1: [Name], [Dosage], [Frequency], [Duration]  
+      *(Refer to the context for the first line of treatment based on the given symptoms)*
+    - **Alternative Option:** Medication 2: [Name], [Dosage], [Frequency], [Duration]  
+      *(Refer to the context for the alternative medication)*
+    - **Additional Option (if needed):** Medication 3: [Name], [Dosage], [Frequency], [Duration]
 
-    2. **Rationale for Each Medication:**
-        - Explanation for why each medication is chosen, with a focus on effectiveness and patient safety.
+2. **Rationale for Each Medication:** (Consider patient history)
+    - Provide an explanation for why each medication is chosen, focusing on its effectiveness and safety for the patient.
 
-    3. **Patient Instructions:**
-        - Detailed guidance on how to take the medication (e.g., with food, time of day).
-        - Reminders about completing the full course of treatment.
+3. **Medications to Avoid:** (Strictly based on the condition from patient history)
+    - List any medicine (not just prescribed but any) should be avoided based on the patient's history and potential interactions.
 
-    4. **Monitoring and Safety Recommendations:**
-        - Specific guidance on what to monitor in the patient (e.g., side effects, periodic tests).
-        - Recommendations for follow-up actions in case of adverse reactions or lack of improvement.
+4. **Patient Instructions:** (Consider patient history)
+    - Provide detailed guidance on how to take each medication (e.g., with food, time of day).
+    - Include reminders about completing the full course of treatment.
 
-    Now, generate the recommendations.
-    """
+5. **Monitoring and Safety Recommendations:** (Also consider patient history)
+    - Offer specific guidance on what to monitor in the patient (e.g., side effects, periodic tests).
+    - Recommend follow-up actions in case of adverse reactions or lack of improvement.
+
+Now, generate the recommendations.
+"""
+
         )
 
         
