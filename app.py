@@ -16,9 +16,12 @@ import streamlit as st
 import ast
 import streamlit as st
 
-   
+ 
 
 # Accessing the values
+LANGCHAIN_TRACING_V2=st.secrets['LANGCHAIN_TRACING_V2']
+LANGCHAIN_API_KEY=st.secrets['LANGCHAIN_API_KEY']
+LANGCHAIN_PROJECT=st.secrets['LANGCHAIN_PROJECT']  
 groq_api_key = st.secrets["GROQ_API_KEY"]
 langchain_endpoint = st.secrets["LANGCHAIN_ENDPOINT"]
 NVIDIA_API=st.secrets['NVIDIA_API']
